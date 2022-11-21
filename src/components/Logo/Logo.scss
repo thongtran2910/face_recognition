@@ -1,0 +1,24 @@
+// @import "../ReactParallaxTilt.scss";
+.track-on-window {
+  margin-left: 50px;
+  width: 250px;
+  height: 250px;
+  transform-style: preserve-3d;
+
+  .inner-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    border-radius: 50%;
+  }
+  .inner-element:hover {
+    #pic-1 {
+      display: none;
+    }
+    #pic-2 {
+      display: block;
+    }
+  }
+}
