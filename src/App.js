@@ -12,14 +12,37 @@ import { useState } from "react";
 function App() {
   const [input, setInput] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+  const [box, setBox] = useState([]);
+
   const USER_ID = "thongtran2910";
-  // Your PAT (Personal Access Token) can be found in the portal under Authentification
   const PAT = "f12a28922b694ca29cae95724ff25f50";
   const APP_ID = "face-recognition";
-  // Change these to whatever model and image URL you want to use
-  const MODEL_ID = "general-image-recognition";
-  // const MODEL_VERSION_ID = "aa7f35c01e0642fda5cf400f543e7c40";
+  const MODEL_ID = "face-detection";
   const IMAGE_URL = input;
+
+  const calculateFaceLocation = (data) => {
+    const clarifaiFaceArr = data.outputs[0].data.regions;
+    const clarifaiFace = clarifaiFaceArr.map(
+      (item) => item.region_info.bounding_box
+    );
+    const image = document.getElementById("inputImg");
+    const width = Number(image.width);
+    const height = Number(image.height);
+    const dimension = clarifaiFace.map((i) => {
+      return {
+        leftCol: i.left_col * width,
+        topRow: i.top_row * height,
+        rightCol: width - i.right_col * width,
+        bottomRow: height - i.bottom_row * height,
+      };
+    });
+    return dimension;
+  };
+
+  const displayFaceBox = (box) => {
+    setBox(box);
+  };
+
   const onInputChange = (event) => {
     setInput(event.target.value);
   };
@@ -41,6 +64,7 @@ function App() {
         },
       ],
     });
+
     const requestOptions = {
       method: "POST",
       headers: {
@@ -55,9 +79,14 @@ function App() {
       requestOptions
     )
       .then((response) => response.text())
-      .then((result) => console.log("result", result))
+
+      .then((result) => {
+        const resultJson = JSON.parse(result);
+        displayFaceBox(calculateFaceLocation(resultJson));
+      })
       .catch((error) => console.log("error", error));
   };
+
   return (
     <div className="App">
       <MouseParticles
@@ -74,7 +103,7 @@ function App() {
         onInputChange={onInputChange}
         onButtonSubmit={onButtonSubmit}
       />
-      <FaceRecognition imgUrl={input} />
+      <FaceRecognition box={box} imgUrl={imgUrl} />
     </div>
   );
 }
