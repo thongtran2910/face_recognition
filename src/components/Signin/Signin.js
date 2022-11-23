@@ -1,6 +1,8 @@
 import React from "react";
 import { Button, Form, Input, Card } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import Lottie from "lottie-react";
+import signinAnimation from "../../asset/signin.json";
 
 export default function Signin() {
   const onFinish = (values) => {
@@ -8,8 +10,13 @@ export default function Signin() {
   };
   return (
     <div className="h-screen flex justify-center items-center">
-      <Card hoverable style={{ width: 500, height: 500 }}>
-        <h1 className="text-4xl font-bold mb-10">Sign In</h1>
+      <Card className="w-[400px] lg:w-[500px]" hoverable>
+        <Lottie
+          className="w-[10em] mx-auto border-4 rounded-full border-teal-600"
+          animationData={signinAnimation}
+          loop={true}
+        />
+        <h2 className="text-4xl font-bold mb-10 mt-5">Sign In</h2>
         <Form
           name="normal_login"
           className="login-form"
