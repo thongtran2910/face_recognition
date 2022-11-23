@@ -1,15 +1,11 @@
-import "./App.css";
-import MouseParticles from "react-mouse-particles";
-import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
-import Logo from "./components/Logo/Logo";
-import Navigation from "./components/Navigation/Navigation";
-import Rank from "./components/Rank/Rank";
-import ParticlesBg from "particles-bg";
-import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
-import { useState } from "react";
-import Signin from "./components/Signin/Signin";
+import React, { useState } from "react";
+import FaceRecognition from "../../components/FaceRecognition/FaceRecognition";
+import ImageLinkForm from "../../components/ImageLinkForm/ImageLinkForm";
+import Logo from "../../components/Logo/Logo";
+import Navigation from "../../components/Navigation/Navigation";
+import Rank from "../../components/Rank/Rank";
 
-function App() {
+export default function HomePage() {
   const [input, setInput] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [box, setBox] = useState([]);
@@ -86,20 +82,9 @@ function App() {
       })
       .catch((error) => console.log("error", error));
   };
-
   return (
-    <div className="App">
-      <MouseParticles
-        g={1}
-        color="random"
-        cull="MuiSvgIcon-root,MuiButton-root"
-        level={6}
-      />
-      <ParticlesBg type="cobweb" bg={true} />
+    <>
       <Navigation />
-
-      <Signin />
-
       <Logo />
       <Rank />
       <ImageLinkForm
@@ -107,8 +92,6 @@ function App() {
         onButtonSubmit={onButtonSubmit}
       />
       <FaceRecognition box={box} imgUrl={imgUrl} />
-    </div>
+    </>
   );
 }
-
-export default App;
