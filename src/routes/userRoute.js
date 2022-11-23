@@ -7,7 +7,6 @@ export const userRoute = [
   {
     path: "/",
     component: <LayoutTheme Component={HomePage} />,
-    exact: true,
     isUseLayout: true,
   },
   {
