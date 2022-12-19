@@ -1,8 +1,7 @@
-// @import "../ReactParallaxTilt.scss";
 .track-on-window {
   margin-left: 50px;
-  width: 250px;
-  height: 250px;
+  width: 10rem;
+  height: 10rem;
   transform-style: preserve-3d;
 
   .inner-element {
@@ -13,6 +12,11 @@
     transform: rotateY(180deg);
     border-radius: 50%;
   }
+  .inner-element {
+    #pic-2 {
+      display: none;
+    }
+  }
   .inner-element:hover {
     #pic-1 {
       display: none;
@@ -20,5 +24,23 @@
     #pic-2 {
       display: block;
     }
+  }
+}
+@media only screen and (min-width: 640px) {
+  .track-on-window {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .track-on-window {
+    width: 15rem;
+    height: 15rem;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .track-on-window {
+    width: 20rem;
+    height: 20rem;
   }
 }

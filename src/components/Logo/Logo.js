@@ -15,12 +15,7 @@ export default function Logo() {
     >
       <div className="inner-element">
         <img id="pic-1" src="./img/brain-illness.png" alt="brain-illness" />
-        <img
-          id="pic-2"
-          className="hidden"
-          src="./img/brain-health.png"
-          alt="brain-health"
-        />
+        <img id="pic-2" src="./img/brain-health.png" alt="brain-health" />
       </div>
     </Tilt>
   );
