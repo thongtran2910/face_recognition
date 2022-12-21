@@ -64,7 +64,7 @@ export default function RegisterPage() {
 
   const onFinish = () => {
     axios
-      .post("http://localhost:3000/register", {
+      .post("https://face-recognition-server.onrender.com/register", {
         email: email,
         password: password,
         name: name,
