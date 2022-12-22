@@ -70,6 +70,7 @@ export default function RegisterPage() {
         name: name,
       })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           showModalSuccess();
           setTimeout(() => {
