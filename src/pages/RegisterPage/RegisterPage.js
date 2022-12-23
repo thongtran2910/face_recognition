@@ -64,11 +64,14 @@ export default function RegisterPage() {
 
   const onFinish = () => {
     axios
-      .post("https://face-recognition-server.onrender.com/register", {
-        email: email,
-        password: password,
-        name: name,
-      })
+      .post(
+        "https://facerecognition-api-production-9487.up.railway.app/register",
+        {
+          email: email,
+          password: password,
+          name: name,
+        }
+      )
       .then((response) => {
         console.log(response);
         if (response.status === 200) {

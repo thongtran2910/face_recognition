@@ -47,10 +47,13 @@ export default function SigninPage() {
 
   const onFinish = () => {
     axios
-      .post("https://face-recognition-server.onrender.com/signin", {
-        email: email,
-        password: password,
-      })
+      .post(
+        "https://facerecognition-api-production-9487.up.railway.app/signin",
+        {
+          email: email,
+          password: password,
+        }
+      )
       .then((response) => {
         showModalSuccess();
         setTimeout(() => {
