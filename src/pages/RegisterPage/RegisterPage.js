@@ -64,7 +64,7 @@ export default function RegisterPage() {
 
   const onFinish = () => {
     axios
-      .post("cruel-walk-production.up.railway.app/register", {
+      .post("https://cruel-walk-production.up.railway.app/register", {
         email: email,
         password: password,
         name: name,
