@@ -47,13 +47,10 @@ export default function SigninPage() {
 
   const onFinish = () => {
     axios
-      .post(
-        "https://facerecognition-api-production-9487.up.railway.app/signin",
-        {
-          email: email,
-          password: password,
-        }
-      )
+      .post("cruel-walk-production.up.railway.app/signin", {
+        email: email,
+        password: password,
+      })
       .then((response) => {
         showModalSuccess();
         setTimeout(() => {

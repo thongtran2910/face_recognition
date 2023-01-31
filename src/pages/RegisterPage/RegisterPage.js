@@ -64,14 +64,11 @@ export default function RegisterPage() {
 
   const onFinish = () => {
     axios
-      .post(
-        "https://facerecognition-api-production-9487.up.railway.app/register",
-        {
-          email: email,
-          password: password,
-          name: name,
-        }
-      )
+      .post("cruel-walk-production.up.railway.app/register", {
+        email: email,
+        password: password,
+        name: name,
+      })
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
